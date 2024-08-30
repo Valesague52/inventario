@@ -32,12 +32,10 @@ cargarInventario = do
     if exists
         then withFile "inventario.txt" ReadMode $ \h -> do
             contenido <- hGetContents h
-            let lineas = lines contenido
-            return (map leerArticulo lineas)
+            contenido `deepseq` return (map leerArticulo (lines contenido))
         else return []
   where
     leerArticulo linea = read linea :: Articulo
-
 -- Mostrar un artículo en formato String
 mostrarArticulo :: Articulo -> String
 mostrarArticulo (Articulo nombre categoria) =
