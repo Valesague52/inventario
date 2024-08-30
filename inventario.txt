@@ -1,0 +1,2 @@
+Articulo {nombre = "balon", categoria = "deportes"}
+Articulo {nombre = "shampoo", categoria = "higigene"}
